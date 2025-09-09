@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 # from snowflake.snowpark.context import get_active_session
-from snowflake.snowpark.exceptions import SnowparkSQLException
+# from snowflake.snowpark.exceptions import SnowparkSQLException
 
 # Page configuration
 st.set_page_config(
