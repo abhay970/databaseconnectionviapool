@@ -66,10 +66,10 @@ def main():
     st.markdown("Connect to various databases through Snowflake")
     
     # Get Snowflake session
-    session = get_snowflake_session()
-    if not session:
-        st.error("Cannot establish Snowflake session")
-        return
+    # session = get_snowflake_session()
+    # if not session:
+    #     st.error("Cannot establish Snowflake session")
+    #     return
     
     # Create tabs for different functionalities
     tab1, tab2 = st.tabs(["📝 Connect Database", "🔍 Query Database"])
