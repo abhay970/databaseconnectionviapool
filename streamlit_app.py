@@ -51,14 +51,14 @@ DATABASE_CONFIGS = {
 cnx = st.connection("snowflake")
 session = cnx.session()
 # Initialize session
-# @st.cache_resource
-# def get_snowflake_session():
-#     """Get active Snowflake session"""
-#     try:
-#         return get_active_session()
-#     except Exception as e:
-#         st.error(f"Failed to get Snowflake session: {str(e)}")
-#         return None
+@st.cache_resource
+def get_snowflake_session():
+    """Get active Snowflake session"""
+    try:
+        # return get_active_session()
+    except Exception as e:
+        st.error(f"Failed to get Snowflake session: {str(e)}")
+        return None
 
 # Main application
 def main():
