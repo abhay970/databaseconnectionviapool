@@ -48,29 +48,28 @@ DATABASE_CONFIGS = {
         "has_token": True
     },
 }
-
+cnx = st.connection("snowflake")
+session = cnx.session()
 # Initialize session
 # @st.cache_resource
 # def get_snowflake_session():
 #     """Get active Snowflake session"""
 #     try:
-#         # return get_active_session()
+#         return get_active_session()
 #     except Exception as e:
 #         st.error(f"Failed to get Snowflake session: {str(e)}")
 #         return None
-cnx = st.connection("snowflake")
-session = cnx.session()
 
 # Main application
 def main():
     st.title("🗄️ Database Connector")
-    st.markdown("Connect to various databases through Streamlit App")
+    st.markdown("Connect to various databases through Snowflake")
     
     # Get Snowflake session
     # session = get_snowflake_session()
-    if not session:
-        st.error("Cannot establish Snowflake session")
-        return
+    # if not session:
+    #     st.error("Cannot establish Snowflake session")
+    #     return
     
     # Create tabs for different functionalities
     tab1, tab2 = st.tabs(["📝 Connect Database", "🔍 Query Database"])
@@ -264,7 +263,7 @@ def main():
                         if db_type == "JDE":
                             st.session_state.query_text = "SELECT 1 FROM DUAL"
                         elif db_type == "SAP":
-                            st.session_state.query_text = "SELECT 1 FROM DUMMY"
+                            st.session_state.query_text = "SELECT Name FROM Table_Name"
                         elif db_type == "Salesforce":
                             st.session_state.query_text = "SELECT Id FROM Account LIMIT 1"
                         else:
