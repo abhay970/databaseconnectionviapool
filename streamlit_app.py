@@ -32,7 +32,7 @@ DATABASE_CONFIGS = {
         "password_placeholder": "SAP Password",
         "pool_placeholder": "sap-dev",
         "sample_tables": ["MARA", "VBAK", "VBAP", "KNA1", "BKPF"],
-        "sample_query": "SELECT TOP 5 * FROM MARA",
+        "sample_query": "SELECT * FROM products",
         "has_token": False
     },
     "Salesforce": {
@@ -64,7 +64,7 @@ session = cnx.session()
 # Main application
 def main():
     st.title("🗄️ Database Connector")
-    st.markdown("Connect to various databases through Snowflake")
+    st.markdown("Connect to various databases through Streamlit App")
     
     # Get Snowflake session
     # session = get_snowflake_session()
