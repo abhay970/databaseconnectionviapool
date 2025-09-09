@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import json
-from snowflake.snowpark.context import get_active_session
+# from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.exceptions import SnowparkSQLException
 
 # Page configuration
@@ -54,10 +54,12 @@ DATABASE_CONFIGS = {
 def get_snowflake_session():
     """Get active Snowflake session"""
     try:
-        return get_active_session()
+        # return get_active_session()
     except Exception as e:
         st.error(f"Failed to get Snowflake session: {str(e)}")
         return None
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # Main application
 def main():
@@ -65,7 +67,7 @@ def main():
     st.markdown("Connect to various databases through Snowflake")
     
     # Get Snowflake session
-    session = get_snowflake_session()
+    # session = get_snowflake_session()
     if not session:
         st.error("Cannot establish Snowflake session")
         return
