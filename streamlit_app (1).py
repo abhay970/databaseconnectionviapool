@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import json
-from snowflake.snowpark.context import get_active_session
+# from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.exceptions import SnowparkSQLException
 
 # Page configuration
@@ -48,16 +48,18 @@ DATABASE_CONFIGS = {
         "has_token": True
     },
 }
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # Initialize session
 @st.cache_resource
-def get_snowflake_session():
-    """Get active Snowflake session"""
-    try:
-        return get_active_session()
-    except Exception as e:
-        st.error(f"Failed to get Snowflake session: {str(e)}")
-        return None
+# def get_snowflake_session():
+#     """Get active Snowflake session"""
+#     try:
+#         return get_active_session()
+#     except Exception as e:
+#         st.error(f"Failed to get Snowflake session: {str(e)}")
+#         return None
 
 # Main application
 def main():
