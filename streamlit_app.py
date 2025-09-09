@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 import json
 # from snowflake.snowpark.context import get_active_session
-# from snowflake.snowpark.exceptions import SnowparkSQLException
+from snowflake.snowpark.exceptions import SnowparkSQLException
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # Page configuration
 st.set_page_config(
@@ -48,8 +50,7 @@ DATABASE_CONFIGS = {
         "has_token": True
     },
 }
-cnx = st.connection("snowflake")
-session = cnx.session()
+
 # Initialize session
 # @st.cache_resource
 # def get_snowflake_session():
